@@ -10,8 +10,38 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## R Markdown
-This is a workbook for the exploratory data analysis in R on the 4 anti-trans bills
+This is a workbook for the exploratory data analysis in R on the 4 anti-trans bills.
 
+Before we did the analysis we had to do some data cleaning. Here is an example of some text
+___
+Be it enacted by the Legislature of the State of Arizona:
+
+Section 1. Title 15, chapter 5, article 1, Arizona Revised Statutes, is amended by adding section 15-509, to read:
+
+15-509. Pronouns; biological sex; parental permission; prohibition; policies
+
+A. AN EMPLOYEE OR INDEPENDENT CONTRACTOR OF A SCHOOL DISTRICT OR CHARTER SCHOOL MAY NOT KNOWINGLY ADDRESS, IDENTIFY OR REFER TO A STUDENT WHO IS UNDER EIGHTEEN YEARS OF AGE BY EITHER OF THE FOLLOWING UNLESS THE SCHOOL DISTRICT OR CHARTER SCHOOL RECEIVES WRITTEN PERMISSION FROM THE STUDENT'S PARENT:
+
+1. A PRONOUN THAT DIFFERS FROM THE PRONOUN THAT ALIGNS WITH THE STUDENT'S BIOLOGICAL SEX.
+
+2. A FIRST NAME OTHER THAN THE FIRST OR MIDDLE NAME THAT IS LISTED ON THE STUDENT'S OFFICIAL SCHOOL RECORDS, EXCEPT THAT AN EMPLOYEE OR INDEPENDENT CONTRACTOR MAY ADDRESS, IDENTIFY OR REFER TO A STUDENT BY A NICKNAME THAT IS COMMONLY ASSOCIATED WITH THE STUDENT'S NAME OF RECORD.
+
+B. A SCHOOL DISTRICT OR CHARTER SCHOOL MAY NOT REQUIRE AN EMPLOYEE OR INDEPENDENT CONTRACTOR TO ADDRESS, IDENTIFY OR REFER TO A PERSON BY A PRONOUN THAT DIFFERS FROM THE PRONOUN THAT ALIGNS WITH THE PERSON'S BIOLOGICAL SEX IF DOING SO IS CONTRARY TO THE EMPLOYEE'S OR INDEPENDENT CONTRACTOR'S RELIGIOUS OR MORAL CONVICTIONS.
+
+C. EACH SCHOOL DISTRICT GOVERNING BOARD AND CHARTER SCHOOL GOVERNING BODY SHALL ADOPT POLICIES TO IMPLEMENT THIS SECTION.
+
+D. THIS SECTION DOES NOT PROHIBIT ANY PERSON DESCRIBED IN SUBSECTION A OF THIS SECTION FROM DISCUSSING MATTERS OF PUBLIC CONCERN OUTSIDE THE CONTEXT OF THE PERSON'S OFFICIAL DUTIES. 
+___
+
+
+The initial section is metadata which describes the bill and how and where it has been amended. Keeping track of the bill revisions may be interesting, but here we are interested in the document as it stands. In addition, the addendum in this bill is a duplication of lines below.  Therefore we remove the following:
+"Be it enacted by the Legislature of the State of Arizona:
+
+Section 1. Title 15, chapter 5, article 1, Arizona Revised Statutes, is amended by adding section 15-509, to read:
+
+15-509. Pronouns; biological sex; parental permission; prohibition; policies"
+
+We also remove the "1. " "A. " etc before each line.
 
 ```{r}
 
