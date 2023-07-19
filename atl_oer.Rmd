@@ -41,7 +41,16 @@ Section 1. Title 15, chapter 5, article 1, Arizona Revised Statutes, is amended 
 
 15-509. Pronouns; biological sex; parental permission; prohibition; policies"
 
-We also remove the "1. " "A. " etc before each line.
+We also remove the "1. " "A. " etc before each line. We discussed how the numbering of the itemization is less important to us than the content within. Some of the documents also have bill numbers, line numbers, page numbers, or time stamps, which we remove for similar reasons.
+
+In some legislation that reques changes to multiple sections, occassionally preamble is repeated at the start to each section. See the example below from Florida:
+___
+  147         Section 5. Section 456.52, Florida Statutes, is created to
+  148  read:
+  149         456.52
+___
+
+We pulled this in our manual cleaning of the test data sets, but may not have to be pulled.
 
 ```{r}
 
