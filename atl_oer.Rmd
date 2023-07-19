@@ -43,14 +43,25 @@ Section 1. Title 15, chapter 5, article 1, Arizona Revised Statutes, is amended 
 
 We also remove the "1. " "A. " etc before each line. We discussed how the numbering of the itemization is less important to us than the content within. Some of the documents also have bill numbers, line numbers, page numbers, or time stamps, which we remove for similar reasons.
 
-In some legislation that reques changes to multiple sections, occassionally preamble is repeated at the start to each section. See the example below from Florida:
+In some legislation that reques changes to multiple sections, occassionally preamble is repeated at the start to each section. See the examples below from Florida:
 ___
   147         Section 5. Section 456.52, Florida Statutes, is created to
   148  read:
   149         456.52
 ___
 
+___
+CS/CS/HB 1421 2023
+CODING: Words stricken are deletions; words underlined are additions.
+hb1421-02-c2
+Page 10 of 10
+F L O R I D A H O U S E O F R E P R E S E N T A T I V E S
+___
 We pulled this in our manual cleaning of the test data sets, but may not have to be pulled.
+Same with numbers, (_), and "Section 5." type headers. It may be okay to leave them in if it is a broader analysis.
+"s." and "ss." could be pulled as they are short for section(s).
+Sometimes line numbers have 1 space after, sometimes 2
+
 
 ```{r}
 
