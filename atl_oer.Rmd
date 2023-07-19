@@ -64,15 +64,141 @@ Sometimes line numbers have 1 space after, sometimes 2
 
 
 ```{r}
+library(readxl)
+bills <- read_excel("4-bill-test.xlsx")
+View(bills)
+template_leg <- read_excel("template legislation.xlsx")
+View(template_leg)
+```
+
+## Clean data
+
+We need some tools for text cleaning
+```{r}
+#install.packages("stopwords")
+library(stringr)
+library(stopwords)
+```
+Have a look at the text imported
+
+```{r}
+template_leg$text[1]
+```
+
+
+The syntax for removal is: 'str_replace_all(string, pattern, replacement)'. In the RStudio IDE, you can click on the function word and hit F1, and it brings up the help documentation which has some nice examples.
+
+We will go ahead and make several substitutions and replacements. Order does matter here, so make a list, then execute that list.
+
+### Removing line breaks
+```{r}
+# Replace all instances of "\n" (newline) with a space - use escape characters
+# You have to add a space otherwise words will run together
+mhall <- str_replace_all(mhall, "\\\n", " ")
+```
+
+### Completely delete a phrase or line
+``` {r}
+# Replace all instances of the title with no space
+mhall <- str_replace_all(mhall, "Sing Out Loud Children’s Songs", "")
+# Replace all instances of the poem title with no space
+mhall <- str_replace_all(mhall, "LYRICS:  MARY HAD A LITTLE LAMB", "")
+```
+
+### Delete all punctuation
+
+Because we are going to look at 2 grams, we are going to remove all punctuation.  
+
+``` {r}
+#Replace punctuation with no space
+
+# Delete all quotation marks - these are left and right quotation marks
+mhall <- str_replace_all(mhall, "“", "")
+mhall <- str_replace_all(mhall, "”", "")
+
+# Delete all commas
+mhall <- str_replace_all(mhall, ",", "")
+```
+
+Finally, we clean up redundant spaces
+``` {r}
+# Replace multiple spaces with one space
+# s+ means 1 or more spaces.  \\ are escape characters
+mhall <- str_replace_all(mhall, "\\s+", " ")
+```
+
+Check to make sure there isn't anything else that needs removing, such as numbers.
+
+``` {r}
+# Delete spaces at the start and end of our text
+mhall<-trimws(mhall, "both")
+```
+
+
+### Cleaning for an effective network graph
+
+We now want to make sure that our words will be recognized as the same when we construct relationships, so we have to converting everything to lowercase. Then we will use a for loop to define an edgelist.
+
+``` {r}
+# Convert all text to lowercase
+mhall <- tolower(mhall)
+```
+
+Are there any words that make sense to eliminate in our analysis?
+
+``` {r}
+# Identify stop words
+# stopwords gives us a list of such words
+# otherwise we could manually define these, or even add to this list
+stopwords_regex = paste(stopwords('en'), collapse = '\\b|\\b')
+stopwords_regex = paste0('\\b', stopwords_regex, '\\b')
+mhall <- str_replace_all(mhall, stopwords_regex, '')
+```
+
+
+If we were looking at word/sentence relationships, we may have wanted to keep periods and question marks first to define sentences before breaking up into words. 
+
+``` {r}
+# saving as mhall_d for duple
+# Delete all question marks (use escape characters)
+mhall_d <- str_replace_all(mhall, "\\?", "")
+
+# Delete all periods
+mhall_d <- str_replace_all(mhall_d, "\\.", "")
 
 ```
 
-## Including Plots
+After we look at mhall, we see we need to clean up redundant spaces once again.
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+``` {r}
+# Replace multiple spaces with one space
+# s+ means 1 or more spaces.  \\ are escape characters
+mhall_d <- str_replace_all(mhall_d, "\\s+", " ")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Convert text to edgelist based on words next to each other 
+We will create a network based on next word neighbors. To define an edgelist based on 2 grams, we need to break this into a list of words first.
+
+### Get a vector of words
+We now have one list of words in a 1x1 matrix. We need to convert that to a vector with one word in each slot.
+
+``` {r}
+# Remember that strsplit returns a list of lists
+mhall_ls<- str_split(mhall_d, " ")
+```
+
+I recommend viewing 'mhall_ls' to get a sense of how the list looks.  
+
+``` {r}
+# Grab just the vector
+mhall_vec<- mhall_ls[[1]]
+```
+
+Now look at `mhall_vec` again. How do you remove the "" entries? 
+
+``` {r}
+# Grab just the vector without ""
+# First mhall_vec %in% "" finds where they do match
+# Then keep just the ones that don't match
+mhall_vec<-mhall_vec[! (mhall_vec %in% "")]
+```
