@@ -265,5 +265,23 @@ barplot(height=top20$n, names=top20$words, las = 2, col=rgb(0.2,0.4,0.6,0.6) )
 
 ### Plot in ggplot2
 
-ggplot2 needs to use the original dataframe, not the top 20
+ggplot2 can look prettier :)
+```{r}
+library(ggplot2)
+# ggplot2 version
+# help guide: https://r-graph-gallery.com/218-basic-barplots-with-ggplot2.html
+ggplot(top20, aes(x=words, y=n)) + 
+  geom_bar(stat = "identity")
+
+```
+
+again the figure would be more easily read if the text was vertical
+```{r}
+ggplot(top20, aes(x=words, y=n)) + 
+  geom_bar(stat = "identity", color=rgb(0.1,0.4,0.5,0.7), fill=rgb(0.1,0.4,0.5,0.7)) +
+# Rotate x-axis text to make labels vertical
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(x = NULL)  # or xlab("")
+
+```
 
