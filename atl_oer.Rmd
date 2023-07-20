@@ -179,9 +179,91 @@ ltext_ls<- str_split(ltext, " ")
 
 I recommend viewing 'ltext_ls' to get a sense of how the list looks.  
 
+I am saving this as a vector and exporting it to csv for later independent use. You can also structure your word vector data so that each row in "bills" is duplicated and then a word vector row. So if my bill had 4 words, I can have 4 rows for bill1 that have the same descriptor data (e.g. Healthcare) and but under the "words" column, rown 1 has the first word, row 2 has the second word, etc. That is probably the best way to structure the data, but it makes it harder to visualize the data when you have over 400 words like bill 1 actually has.
+
 ``` {r}
 # Grab just the vector
 ltext_vec<- ltext_ls[[1]]
 
-write.csv(ltext_vec, file = paste0("bill_",i), row.names = FALSE, col.names = FALSE)
+# convert to data frame
+ltext_vec<-as.data.frame(ltext_vec)
+colnames(ltext_vec) <- c("words")
+
+#write a csv of the cleaned words.  That way you can just do the next section without running the cleaning parts.
+write.csv(ltext_vec, file = paste0("bill_",i), row.names = FALSE, col.names = TRUE)
 ```
+
+## Visualizing the word vector output
+
+### Summary of the data
+```{r}
+library(dplyr)
+# Get a sense for the data through a table of word counts
+
+# you will need a read command if you are just picking up from the cleaned text
+ltext_df<-read.csv("bill_1")
+
+#how many words are there? This may come up later
+n_words <- dim(ltext_vec)[1]
+
+# Use dplyr to automatically count the words that exist. This creates a table (in a dataframe structure) in which you have the list of unique words and an absolute frequency count next to each word.
+ltext_counts <- ltext_df %>% count(words)
+
+#relative freq
+ltext_counts$relf <- ltext_counts$n / n_words
+View(ltext_counts)
+
+# use dim() to tell me how big the matrix is
+print(dim(ltext_counts))
+
+```
+
+The first number is rows (226) and the second is columns (3). This means that our word vector contains 226 words & 3 columsn - the word, the absolute frequency or count, and the relative frequency or probability of occurance. 
+
+Some methods of visualization, like the base plotting function in R, use this form of the data.
+
+
+### Base plot in R
+```{r}
+# This is the base plotting function in R
+barplot(height=ltext_counts$n, names=ltext_counts$words)
+
+# Great reference
+# https://r-graph-gallery.com/208-basic-barplot.html
+```
+
+This plot is illegible. Because it has 226 words. We can look instead at just the 20 most frequently used words.
+
+### Top 20
+
+```{r}
+#This will order in descending order
+counts_ordered <- ltext_counts %>% arrange(desc(n))
+View(counts_ordered)
+
+#This will extract the top 20 for visualization purposes
+top20 <-  head(counts_ordered, 20)
+top20
+```
+
+
+```{r}
+# Same but top 20
+barplot(height=top20$n, names=top20$words)
+
+```
+
+This is much better, but you cannot read the words, so we will have the words tilted for better readability
+```{r}
+# las 2 will make vertical labels
+# col will make it a little less boring in color
+barplot(height=top20$n, names=top20$words, las = 2, col=rgb(0.2,0.4,0.6,0.6) )
+
+# Great reference for options
+# https://r-graph-gallery.com/209-the-options-of-barplot.html
+```
+
+### Plot in ggplot2
+
+ggplot2 needs to use the original dataframe, not the top 20
+
