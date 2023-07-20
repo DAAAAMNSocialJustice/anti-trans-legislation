@@ -16,13 +16,15 @@ The file used here was a copy and paste into the xlsx from the html version of t
 
 
 ```{r}
-library(readxl)
-bills <- read_excel("4-bill-test.xlsx")
-View(bills)
-template_leg <- read_excel("template legislation.xlsx")
-View(template_leg)
-probills <- read_excel("pro-LGBTQbills-test.xlsx")
-View(probills)
+#library(readxl)
+#bills <- read_excel("4-bill-test.xlsx")
+#View(bills)
+#template_leg <- read_excel("template legislation.xlsx")
+#View(template_leg)
+#probills <- read_excel("pro-LGBTQbills-test.xlsx")
+#View(probills)
+IL_probill <- paste(readLines("IL-HB1596.txt"), collapse="\n")
+
 ```
 
 ## Clean data
@@ -37,9 +39,9 @@ Have a look at the text imported
 
 ```{r}
 # we are going to do the first pro-LGBTQ bill - an Illinois bill that passed on June 9 2023 was called "The Given Name Act Protection" which addresses pronoun use in schools & is named the same as the Heritage template legislation
-i = 1
-billname = paste0("probill_",i)
-ltext<-bills$text[i]
+#i = 1
+billname = "IL_probill"
+ltext<-IL_probill
 ltext
 ```
 
@@ -60,10 +62,6 @@ ltext <- str_replace_all(ltext, "\\\n", " ")
 # "\r" is carriage return
 ltext <- str_replace_all(ltext, "\\\r", " ")
 
-# "\u" is a unicode character
-# to get rid of \u0080\u0094
-ltext2 <- str_replace_all(ltext, "\\\u[0-9][0-9][0-9][0-9]", " ")
-
 # We are going to remove "." and "," next. There are a few reasons for this. I see U.S. will be US and there are some places where the end "." is interfering with removing/matching some words for replacement and removal.
 
 # If we were looking at word/sentence relationships, we may have wanted to keep periods and question marks first to define sentences before breaking up into words. 
@@ -74,20 +72,21 @@ ltext <- str_replace_all(ltext, "’", "")
 ltext <- str_replace_all(ltext, "‘", "")
 ltext <- str_replace_all(ltext, "“", "")
 ltext <- str_replace_all(ltext, "”", "")
+ltext <- str_replace_all(ltext, '"', " ")
 ltext <- str_replace_all(ltext, "-", "")
+ltext <- str_replace_all(ltext, '_', " ")
+ltext <- str_replace_all(ltext, "\\|", " ")
 ltext <- str_replace_all(ltext, ":", " ")
+ltext <- str_replace_all(ltext, ";", " ")
 ltext <- str_replace_all(ltext, "/", "")
 ltext <- str_replace_all(ltext, "\\\\", "") #remove \
-ltext <- str_replace_all(ltext, ";", " ")
-ltext <- str_replace_all(ltext, "\"", " ")
-ltext <- str_replace_all(ltext, ";", " ")
 #ltext <- str_replace_all(ltext, "\\?", "")
 
 # We also have () and [] to be removed
 ltext <- str_replace_all(ltext, "\\(|\\)|\\[|\\]", "")
 
 #lets check progress
-ltext
+#ltext
 
 ```
 
@@ -152,7 +151,6 @@ ltext_vec<-as.data.frame(ltext_vec)
 colnames(ltext_vec) <- c("words")
 
 #write a csv of the cleaned words.  That way you can just do the next section without running the cleaning parts.
-billname = paste0("bill_",i)
 write.csv(ltext_vec, file = billname, row.names = FALSE)
 ```
 
@@ -181,7 +179,7 @@ print(dim(ltext_counts))
 
 ```
 
-The first number is rows (67) and the second is columns (3). This means that our word vector contains 67 distinct words & 3 columns - the word, the absolute frequency or count, and the relative frequency or probability of occurance. 
+The first number is rows (141) and the second is columns (3). This means that our word vector contains 141 distinct words & 3 columns - the word, the absolute frequency or count, and the relative frequency or probability of occurance. 
 
 Some methods of visualization, like the base plotting function in R, use this form of the data.
 
