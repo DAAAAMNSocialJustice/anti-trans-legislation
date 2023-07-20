@@ -7,5 +7,17 @@
 (RR) 7. Learners will identify calls to action and empower themselves and others to actively participate in their community.
 
 What does it look like for students to demonstrate this?
+1. Learners will be able to use both qualitative and quantitative data to present stories about people harmed by legislation targeting specific identities.
+(demonstrating)
+- need to include qualitative data in data storytelling (i.e. quotes, excerpts, could extend to art, audio, etc.)
+- need to include quantitative data in data storytelling (i.e. probability, prediction, count statistics, plots)
+- using prose to present claims from qualitative and quantitative data
+(not demonstrating/incomplete)
+- no/little qualitative data used
+- little context provided for the story
+- incomplete justification of claims
+- making unfounded assumptions about the people
+(NOTE: I think this is a case study question!)
+
 
 
