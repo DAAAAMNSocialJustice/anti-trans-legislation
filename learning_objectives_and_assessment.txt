@@ -19,5 +19,61 @@ What does it look like for students to demonstrate this?
 - making unfounded assumptions about the people
 (NOTE: I think this is a case study question!)
 
+2./3. 
+ Learners will be able to assess and articulate the limitations of a data set's potential to answer formulated questions. Learners will be able to formulate questions based on available data and extract the data needed to make informed and justified claims.
+
+Learners can…
+Discuss the answers (to which there will be many) to the questions: 
+Who or what is missing from the data?
+Where are there potentials for inaccuracies in the data?
+How is the data biased?
+What additional data would be useful in this dataset?
+What types of data are present in the data?
+	They can provide written or oral commentary on these questions that is understandable to the general public.
+Identify potential research questions that can be explored with current data, and articulate why other questions require more or different data.
+Create their own questions and answer them given data.
+Locate in both data tables and different types visualizations where they can the data needed to answer questions and make claims
+
+ 4. Learners will be able to describe fundamental processes for analyzing textual data.
+(demonstrating)
+Discuss limitations of claims made from text analysis
+Apply text analysis to “new” data
+Text analysis does not include stop words, is lemmatized
+
+(not demonstrating/incomplete)
+Incomplete or absent articulation of limitations
+Text analysis includes words that shouldn’t be there
+
+5. Learners will be able to storytell through visualization of text analysis with legislative text.
+(demonstrating)
+Make a visualization of legislative text that effectively communicates/bolsters a claim
+
+(not demonstrating/incomplete)
+Unable to articulate a claim from the text visualization
+Articulates a claim but with incomplete justification
+Justifies a claim but not in a way that supports it
+
+6. Learners will be able to justify the choice between an absolute frequency and a relative frequency when communicating with count data.
+(demonstrating)
+Articulates what the numerator and denominator in proportions and probability means: what two groups are being compared?
+Determines the difference between absolute and relative frequency
+Identifies scenarios when absolute frequency and relative frequency are more appropriate.
+(not demonstrating/incomplete)
+Making claims that do not account for or discuss absolute vs. relative frequency
+Uses absolute frequency when relative is more appropriate (or vice versa)
+Does not discuss/articulate how they are using count data
+
+7. Learners will identify calls to action and empower themselves and others to actively participate in their community.
+
+Learners can:
+Articulate various ways they may get involved in the community.
+Create products in different forms to evoke calls to actions:
+Visual: flyers/posters/social media posts
+Written: letters/memos/blog posts
+Oral: presentations/speeches/conversations
+Others: protesting/lobbying/volunteering
+Reflect on their past, present, and future contributions to the community.
+Work in a team or with others in a collaborative and reflective way.
+
 
 
