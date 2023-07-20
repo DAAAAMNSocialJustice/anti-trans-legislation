@@ -69,6 +69,8 @@ bills <- read_excel("4-bill-test.xlsx")
 View(bills)
 template_leg <- read_excel("template legislation.xlsx")
 View(template_leg)
+probills <- read_excel("pro-LGBTQbills-test.xlsx")
+View(probills)
 ```
 
 ## Clean data
@@ -82,8 +84,10 @@ library(stopwords)
 Have a look at the text imported
 
 ```{r}
+# we are going to do the first anti-trans bill - an Arkansas bill that passed and was called "The Given Name Act" which addresses pronoun use in schools & is named the same as the Heritage template legislation
 i = 1
-ltext<-template_leg$text[i]
+billname = paste0("probill_",i)
+ltext<-bills$text[i]
 ltext
 ```
 
@@ -190,7 +194,8 @@ ltext_vec<-as.data.frame(ltext_vec)
 colnames(ltext_vec) <- c("words")
 
 #write a csv of the cleaned words.  That way you can just do the next section without running the cleaning parts.
-write.csv(ltext_vec, file = paste0("bill_",i), row.names = FALSE, col.names = TRUE)
+billname = paste0("bill_",i)
+write.csv(ltext_vec, file = billname, row.names = FALSE)
 ```
 
 ## Visualizing the word vector output
@@ -201,7 +206,7 @@ library(dplyr)
 # Get a sense for the data through a table of word counts
 
 # you will need a read command if you are just picking up from the cleaned text
-ltext_df<-read.csv("bill_1")
+ltext_df<-read.csv(file = billname)
 
 #how many words are there? This may come up later
 n_words <- dim(ltext_vec)[1]
@@ -218,7 +223,7 @@ print(dim(ltext_counts))
 
 ```
 
-The first number is rows (226) and the second is columns (3). This means that our word vector contains 226 words & 3 columsn - the word, the absolute frequency or count, and the relative frequency or probability of occurance. 
+The first number is rows (67) and the second is columns (3). This means that our word vector contains 67 distinct words & 3 columns - the word, the absolute frequency or count, and the relative frequency or probability of occurance. 
 
 Some methods of visualization, like the base plotting function in R, use this form of the data.
 
@@ -284,4 +289,23 @@ ggplot(top20, aes(x=words, y=n)) +
   labs(x = NULL)  # or xlab("")
 
 ```
+
+Reorder from biggest to smallest
+```{r}
+# This pulls the words as ordered
+ordered.words <- top20 %>%
+  arrange(desc(n)) %>%
+  pull(words)
+
+# This will help ggplot interpret the words as factors, and in particular, factors with a particular order.
+top20$words <- ordered(top20$words, levels = ordered.words)
+
+top20 %>%
+ggplot(aes(x=words, y=n)) + 
+  geom_bar(stat = "identity", color=rgb(0.1,0.4,0.5,0.7), fill=rgb(0.1,0.4,0.5,0.7)) +
+# Rotate x-axis text to make labels vertical
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(x = NULL)  # or xlab("")
+```
+
 
