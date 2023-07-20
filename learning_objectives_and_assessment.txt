@@ -6,7 +6,7 @@
 6. Learners will be able to justify the choice between an absolute frequency and a relative frequency when communicating with count data.
 (RR) 7. Learners will identify calls to action and empower themselves and others to actively participate in their community.
 
-What does it look like for students to demonstrate this?
+What activities elicit this evidence?
 1. Learners will be able to use both qualitative and quantitative data to present stories about people harmed by legislation targeting specific identities.
 (demonstrating)
 - need to include qualitative data in data storytelling (i.e. quotes, excerpts, could extend to art, audio, etc.)
@@ -18,6 +18,54 @@ What does it look like for students to demonstrate this?
 - incomplete justification of claims
 - making unfounded assumptions about the people
 (NOTE: I think this is a case study question!)
+
+Assessment idea
+Define a rubric for a case study analysis
+What is the unit of analysis?
+What challenges do we see with curated vs. wild data
+
+Patti:
+Positive thing + action: instances of judges knocking anti-trans bills (what was the judge’s opinion statement - they often pick apart what the bill said and why their arguments are false). Use the words of that opinion to talk about the works in a quant way. Needs multiple data sources and combining both!
+
+
+7. Learners will identify calls to action and empower themselves and others to actively participate in their community.
+
+Learners can:
+Articulate various ways they may get involved in the community.
+Create products in different forms to evoke calls to actions:
+Visual: flyers/posters/social media posts/make a hashtag
+Written: letters/memos/blog posts
+Oral: presentations/speeches/conversations
+Others: protesting/lobbying/volunteering
+Reflect on their past, present, and future contributions to the community.
+Work in a team or with others in a collaborative and reflective way.
+
+Assessment idea
+Provide options (see above) for action that allow for multiple ways to participate
+Link to resources to complete actions above (find my legislature website, links to free design websites, etc.)
+Write a reflection on the process
+Be mindful of the power structures in which learners exist
+
+ 4. Learners will be able to describe fundamental processes for analyzing textual data.
+(demonstrating)
+Discuss limitations of claims made from text analysis
+Apply text analysis to “new” data
+Text 
+analysis does not include stop words, is lemmatized
+
+(not demonstrating/incomplete)
+Incomplete or absent articulation of limitations
+Text analysis includes words that shouldn’t be there
+
+Assessment idea
+Take a bag of words they don’t have yet (but is similar to formative questions in structure), apply the tools they have learned to analyze/visualize the data, make/justify at least one claim that is supported by the data and articulate the limitations of the claim
+Arkansas (worked example), Some gender-affirming care example, Arizona (summative, open)?
+Which ones should be protective vs. negative
+Take the bag of words they have already explored and ask them to make/justify an additional claim? Maybe discuss a limitation? Basically take the data they are familiar with and ask them to use their reasoning skills
+Could also have them look at a dataset and identify what cleaning steps have already been done or might be required? 
+Have them sketch/create a visualization to explain an aspect of text analysis?
+Explain to someone in any way you want one topic of text analysis
+
 
 2./3. 
  Learners will be able to assess and articulate the limitations of a data set's potential to answer formulated questions. Learners will be able to formulate questions based on available data and extract the data needed to make informed and justified claims.
@@ -33,6 +81,32 @@ What types of data are present in the data?
 Identify potential research questions that can be explored with current data, and articulate why other questions require more or different data.
 Create their own questions and answer them given data.
 Locate in both data tables and different types visualizations where they can the data needed to answer questions and make claims
+
+
+Assessment ideas:
+Provide learners with some new  data tables and/or visualizations and have them write a paragraph addressing the questions above in the first bullet. (sharing with others, comparing answers)
+Given a list of potential questions with this dataset, identify which questions can be answered and which cannot, supplied with documentation.
+Given various types of data visualization, supply questions that can be answered by reading the graphs.
+For a longer form question, have students create their own question, visualize the data in some appropriate way, and provide an answer.
+
+
+
+
+
+
+
+What does it look like for students to demonstrate this?
+1. Learners will be able to use both qualitative and quantitative data to present stories about people harmed by legislation targeting specific identities.
+(demonstrating)
+- need to include qualitative data in data storytelling (i.e. quotes, excerpts, could extend to art, audio, etc.)
+- need to include quantitative data in data storytelling (i.e. probability, prediction, count statistics, plots)
+- using prose to present claims from qualitative and quantitative data
+(not demonstrating/incomplete)
+- no/little qualitative data used
+- little context provided for the story
+- incomplete justification of claims
+- making unfounded assumptions about the people
+(NOTE: I think this is a case study question!)
 
  4. Learners will be able to describe fundamental processes for analyzing textual data.
 (demonstrating)
@@ -63,12 +137,28 @@ Making claims that do not account for or discuss absolute vs. relative frequency
 Uses absolute frequency when relative is more appropriate (or vice versa)
 Does not discuss/articulate how they are using count data
 
+2./3. 
+ Learners will be able to assess and articulate the limitations of a data set's potential to answer formulated questions. Learners will be able to formulate questions based on available data and extract the data needed to make informed and justified claims.
+
+Learners can…
+Discuss the answers (to which there will be many) to the questions: 
+Who or what is missing from the data?
+Where are there potentials for inaccuracies in the data?
+How is the data biased?
+What additional data would be useful in this dataset?
+What types of data are present in the data?
+	They can provide written or oral commentary on these questions that is understandable to the general public.
+Identify potential research questions that can be explored with current data, and articulate why other questions require more or different data.
+Create their own questions and answer them given data.
+Locate in both data tables and different types visualizations where they can the data needed to answer questions and make claims
+
+
 7. Learners will identify calls to action and empower themselves and others to actively participate in their community.
 
 Learners can:
 Articulate various ways they may get involved in the community.
 Create products in different forms to evoke calls to actions:
-Visual: flyers/posters/social media posts
+Visual: flyers/posters/social media posts/make a hashtag
 Written: letters/memos/blog posts
 Oral: presentations/speeches/conversations
 Others: protesting/lobbying/volunteering
