@@ -1,0 +1,143 @@
+---
+title: "anti-trans-exercises"
+author: "Group 00"
+date: "2023-07-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+bills.raw <- read.csv("/Users/pattihamerski/Downloads/anti-trans-bills-clean.csv")
+```
+
+```{r}
+bills <- bills.raw %>%
+  mutate(year = as.integer(substr(Date, 1, 4)),
+         month = as.integer(substr(Date, 6, 7)),
+         day = as.integer(substr(Date, 9, 10)),
+         year.month = year + month/12,
+         passed = ifelse(Status %in% c("Passed", "Signed/Enacted"), 1, 0)) %>% 
+  filter(year >= 2017)
+
+bills
+```
+
+How to explore data visually
+
+Variables: 
+
+Column             | Meaning
+-------------------|----------------------------------------
+`Date`             | date
+`State`            | state in US
+`Bill`             | identifier for chamber and bill number
+`Bill.Description` | description of bill
+`Bill.Type`        | type of anti-trans legislation
+`Status`           | outcome of bill
+`Bill.Link`        | URL to bill
+
+Number of bills from each state (table)
+
+```{r}
+state.counts <- bills %>%
+  group_by(State) %>% 
+  summarize(count=n()) %>% 
+  arrange(desc(count))
+
+state.counts
+```
+
+Bills per month by type (line plot)
+
+
+```{r}
+type.counts <- bills %>%
+  group_by(Bill.Type, year.month) %>% 
+  summarize(count=n()) %>% 
+  arrange(year.month)
+
+type.counts
+```
+
+```{r}
+bills %>%
+  group_by(Bill.Type, year) %>% 
+  summarize(count=n()) %>% 
+  arrange(year) %>% 
+  ggplot(aes(x = year, y = count)) +
+  geom_line(aes(color = Bill.Type))
+```
+
+
+
+```{r}
+bills %>%
+  ggplot(aes(x = year)) + 
+  geom_bar(aes(fill = Bill.Type), position = "dodge")
+```
+
+
+
+Number of bills of each type
+
+
+
+
+
+
+Bills of each type and outcome of types
+
+```{r}
+ordered.status <- c("Introduced", "Crossed Over", "Passed",
+                    "Vetoed", "Signed/Enacted", "Dead/Failed")
+
+bills$Status <- ordered(bills$Status, levels = ordered.status)
+```
+
+
+```{r}
+colors.status = c("blue", "cyan", "pink", "red", "magenta", "purple")
+
+bills %>%
+  ggplot(aes(x = Bill.Type)) + 
+  geom_bar(aes(fill = Status), position = "dodge") +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  scale_fill_manual(values = colors.status)
+```
+
+
+
+total num of bills proposed each year
+total num of bills passed each year
+
+```{r}
+bills %>%
+  group_by(year.month) %>% 
+  summarize(count=n(), num.passed=sum(passed)) %>% 
+  ggplot(aes(x = year.month, y = count)) +
+  geom_point(aes(y=count), color="blue") +
+  geom_point(aes(y=num.passed), color="red")
+```
+
+
+
+
+
+
+
+types of bills proposed in 2023 compared to previous years
+types passed more often in 2023
+which states introduced and/or passed most anti-trans bills
+
+
+
+
+
+
