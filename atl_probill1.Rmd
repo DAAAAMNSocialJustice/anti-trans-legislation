@@ -265,3 +265,11 @@ ggplot(aes(x=words, y=n)) +
 ```
 
 
+```{r}
+top20 %>%
+ggplot(aes(x=words, y=relf)) + 
+  geom_bar(stat = "identity", color=rgb(0.1,0.4,0.5,0.7), fill=rgb(0.1,0.4,0.5,0.7)) +
+# Rotate x-axis text to make labels vertical
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(x = NULL)  # or xlab("")
+```
